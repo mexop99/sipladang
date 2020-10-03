@@ -1,4 +1,11 @@
-@extends('layouts.app')
+@extends('layouts.global')
+@section('title')
+    | HOME
+@endsection
+
+@section('headcontent')
+    Dashboard
+@endsection
 
 @section('content')
 <div class="container">
