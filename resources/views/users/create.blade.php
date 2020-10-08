@@ -1,11 +1,7 @@
-@extends('layouts.global')
-@section('title')
-| Create User
-@endsection
+@extends('layouts.global2')
+@section('title', 'Create User')
+@section('headcontent', 'Create User')
 
-@section('headcontent')
-Create User
-@endsection
 
 @section('content')
 @if(session('status'))
@@ -20,7 +16,6 @@ Create User
 
 <div class="card shadow mb-4 col-md-9 p-2">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Create User</h6>
     </div>
     <div class="card-body">
         {{-- FORM ADD USER --}}

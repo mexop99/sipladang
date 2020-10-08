@@ -1,5 +1,7 @@
-@extends('layouts.global')
-@section('title', ' | Edit User')
+@extends('layouts.global2')
+@section('title', 'Edit User')
+
+@section('headcontent', 'Edit User')
 
 @section('content')
 @if(session('status'))
@@ -28,7 +30,7 @@
 
                 <div class="card-body">
                     <div class="form-group">
-                        <label for="name" class="text-gray-900">Name</label>
+                        <label for="name" class="">Name</label>
                         <input value="{{ old('name') ? old('name') : $user->name }}" type="text" class="form-control {{ $errors->first('name') ? "is-invalid":""}}" placeholder="Full Name"
                             name="name" id="name">
                             <div class="invalid-feedback">
@@ -37,7 +39,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="username" class="text-gray-900">Username</label>
+                        <label for="username" class="">Username</label>
                         <input value="{{ $user->username }}" type="text" class="form-control" placeholder="username"
                             name="username" id="username" disabled>
                             
@@ -45,7 +47,7 @@
 
 
                     <div class="form-group">
-                        <h6 for="" class="text-gray-900">Status</h6>
+                        <h6 for="" class="">Status</h6>
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" name="status" id="active" value="ACTIVE" {{ $user->status == "ACTIVE" ? "checked" : "" }}>
                             <label class="form-check-label" for="active">ACTIVE</label>
@@ -57,19 +59,19 @@
                     </div>
 
                     <div class="form-group">
-                        <h6 for="" class="text-gray-900">Roles</h6>
+                        <h6 for="" class="">Roles</h6>
                         <div class="form-check form-check-inline">
                             <input {{ in_array("ADMIN", json_decode($user->roles)) ? "checked" : "" }} type="checkbox"
                                 class="form-check-input {{ $errors->first('roles') ? "is-invalid":"" }}"
                                 name="roles[]" id="ADMIN" value="ADMIN">
-                            <label for="ADMIN" class="text-gray-900 form-check-label">ADMINISTRATOR</label>
+                            <label for="ADMIN" class=" form-check-label">ADMINISTRATOR</label>
                         </div>
         
                         <div class="form-check form-check-inline">
                             <input {{ in_array("STAFF", json_decode($user->roles)) ? "checked" : "" }} type="checkbox"
                                 class="form-check-input {{ $errors->first('roles') ? "is-invalid":"" }}"
                                 name="roles[]" id="STAFF" value="STAFF">
-                            <label for="STAFF" class="text-gray-900 form-check-label">STAFF</label>
+                            <label for="STAFF" class=" form-check-label">STAFF</label>
                         </div>
                         
                         <div class="invalid-feedback">
@@ -106,11 +108,22 @@
                     @else
                         No Avatar
                     @endif
-                    <input type="file" name="avatar" id="avatar" class="form-control">
+                    <div class="custom-file">
+                        <input type="file" name="avatar" id="avatar" class="custom-file-input">
+                        <label class="custom-file-label" for="avatar">Choose file</label>
+                    </div>
                     <small class="text-danger">Kosongkan jika tidak ingin mengubah avatar</small>
                 </div>
             </div>
         </div>
     </div>
 </form>
+@endsection
+@section('script')
+<script src="{{ asset('adminlte3/plugins/bs-custom-file-input/bs-custom-file-input.min.js') }}"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+    bsCustomFileInput.init();
+    });
+</script>
 @endsection

@@ -1,12 +1,6 @@
-@extends('layouts.global')
+@extends('layouts.global2')
 @section('title')
 | List User
-@endsection
-
-@section('stylesheet')
-<!-- Custom styles for this page -->
-<link href="{{ asset('sbadmin2/vendor/datatables/dataTables.bootstrap4.min.css') }}"
-    rel="stylesheet">
 @endsection
 
 @section('headcontent')
@@ -15,8 +9,8 @@ List User
 
 @section('content')
 
-<div class="mb-4">
-    <a href="{{ route('users.create') }}" class="btn btn-sm btn-primary btn-icon-split">
+<div class="mb-2">
+    <a href="{{ route('users.create') }}" class="btn btn-primary btn-icon-split">
         <span class="icon text-white-50">
             <i class="fas fa-user-plus"></i>
         </span>
@@ -25,10 +19,7 @@ List User
         </span>
     </a>
 </div>
-<div class="card shadow mb-4">
-    <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">List User</h6>
-    </div>
+<div class="card shadow mb-2">
     <div class="card-body">
         <div class="table-responsive">
             <table class="table table-responsive-lg" id="dataTable" width="100%" cellspacing="0">
