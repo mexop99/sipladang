@@ -68,7 +68,7 @@
                         @if(\Auth::user())
                             <span class="mr-2 d-none d-lg-inline text-gray-600">{{ \Auth::user()->name }}</span>
                         @endif
-                        <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60"
+                        <img class="img-profile rounded-circle" src="{{ asset('storage' . \Auth::user()->avatar) }}"
                             width="30" height="30">
                     </button>
                     <!-- Dropdown - User Information -->
@@ -114,10 +114,10 @@
                         <img src="{{ asset('adminlte3/dist/img/user2-160x160.jpg') }} "
                             class="img-circle elevation-2" alt="User Image">
                     </div>
-                    @if (\Auth::user())
-                    <div class="info">
-                        <p class="d-block text-white">{{ \Auth::user()->name }}</p>
-                    </div>
+                    @if(\Auth::user())
+                        <div class="info">
+                            <p class="d-block text-white">{{ \Auth::user()->name }}</p>
+                        </div>
                     @endif
                 </div>
 
@@ -131,12 +131,13 @@
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>Dashboard</p>
                             </a>
-                        </li>                        
+                        </li>
                         <li class="nav-header">MASTER DATA</li>
                         <li class="nav-item">
                             <a class="nav-link" href="/users">
                                 <i class="nav-icon fas fa-users"></i>
-                                <p>Users</p></a>
+                                <p>Users</p>
+                            </a>
                         </li>
                     </ul>
                 </nav>
@@ -175,6 +176,8 @@
                         </div>
                     </div>
                 </div>
+
+                @yield('modal')
             </section>
             <!-- /.content -->
         </div>
@@ -195,9 +198,6 @@
         <!-- /.control-sidebar -->
     </div>
     <!-- ./wrapper -->
-
-
-
     <!-- Logout Modal-->
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">

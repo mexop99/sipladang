@@ -14,13 +14,26 @@
 @endif
 
 
-<div class="card shadow mb-4 col-md-9 p-2">
+<div class="card shadow mb-4 col-md-9 p-2 card-primary card-outline">
     <div class="card-header py-3">
     </div>
     <div class="card-body">
         {{-- FORM ADD USER --}}
         <form action="{{ route('users.store') }}" method="post" enctype="multipart/form-data">
             @csrf
+
+            <div class="form-group">
+                <label for="avatar" class="text-gray-900">Avatar</label>
+                <div class="custom-file">
+                    <input name="avatar" type="file"
+                        class="custom-file-input {{ $errors->first('avatar') ? "is-invalid":"" }}"
+                        id="avatar" aria-describedby="avatar">
+                    <label class="custom-file-label" for="avatar">Choose file</label>
+                </div>
+                <div class="invalid-feedback">
+                    {{ $errors->first('avatar') }}
+                </div>
+            </div>
 
             <div class="form-group">
                 <label for="name" class="text-gray-900">Name</label>
@@ -57,7 +70,7 @@
                         name="roles[]" id="STAFF" value="STAFF">
                     <label for="STAFF" class="text-gray-900 form-check-label">STAFF</label>
                 </div>
-                
+
                 <div class="invalid-feedback">
                     {{ $errors->first('roles') }}
                 </div>
@@ -69,20 +82,6 @@
                     class="form-control {{ $errors->first('address') ? "is-invalid":"" }}">{{ old('address') }}</textarea>
                 <div class="invalid-feedback">
                     {{ $errors->first('address') }}
-                </div>
-            </div>
-
-            <div class="form-group custom-file">
-                <label for="avatar" class="text-gray-900">Avatar</label>
-                <div class="custom-file">
-                    <input name="avatar" type="file"
-                        class="custom-file-input {{ $errors->first('avatar') ? "is-invalid":"" }}"
-                        id="avatar" aria-describedby="avatar">
-                    <label class="custom-file-label" for="avatar">Choose file</label>
-                </div>
-
-                <div class="invalid-feedback">
-                    {{ $errors->first('avatar') }}
                 </div>
             </div>
 
@@ -135,5 +134,15 @@
         </form>
     </div>
 </div>
+@endsection
 
+@section('script')
+<script src="{{ asset('adminlte3/plugins/bs-custom-file-input/bs-custom-file-input.min.js') }}">
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        bsCustomFileInput.init();
+    });
+
+</script>
 @endsection
