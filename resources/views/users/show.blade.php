@@ -1,0 +1,29 @@
+@extends('layouts.main')
+@section('content')
+<div class="card">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Nama</th>
+            </tr>
+            <tr>
+                <th>Email</th>
+            </tr>
+            <tr>
+                <th>Username</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>eko</td>
+            </tr>
+            <tr>
+                <td>eko@mail.com</td>
+            </tr>
+            <tr>
+                <td>eko123</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+@endsection

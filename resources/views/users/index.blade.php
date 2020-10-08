@@ -31,7 +31,7 @@ List User
     </div>
     <div class="card-body">
         <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <table class="table table-responsive-lg" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -58,7 +58,8 @@ List User
                                         type="button" class="btn btn-primary">
                                         <i class="fas fa-user-edit"></i>
                                     </a>
-                                    <a href="#" type="button" class="btn btn-info">
+                                    <a href="#"
+                                        type="button" class="btn btn-info " title="show user" data-toggle="modal">
                                         <i class="fas fa-info-circle"></i>
                                     </a>
                                     <button type="button" class="btn btn-danger">
@@ -73,4 +74,26 @@ List User
         </div>
     </div>
 </div>
+<div class="modal fade" id="modalMd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="modalMdTitle"></h4>
+            </div>
+            <div class="modal-body">
+                <div class="modalError"></div>
+                <div id="modalMdContent">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection
+
+@section('script')
+<script>
+
+</script>
 @endsection

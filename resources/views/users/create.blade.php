@@ -9,7 +9,7 @@ Create User
 
 @section('content')
 @if(session('status'))
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <div class="alert alert-success alert-dismissible fade show col-md-9" role="alert">
         {{ session('status') }}
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
@@ -62,14 +62,7 @@ Create User
                         name="roles[]" id="STAFF" value="STAFF">
                     <label for="STAFF" class="text-gray-900 form-check-label">STAFF</label>
                 </div>
-
-                <div class="form-check form-check-inline">
-                    <input type="checkbox"
-                        class="form-check-input {{ $errors->first('roles') ? "is-invalid":"" }}"
-                        name="roles[]" id="CUSTOMER" value="CUSTOMER">
-                    <label for="CUSTOMER" class="text-gray-900 form-check-label">CUSTOMER</label>
-                </div>
-
+                
                 <div class="invalid-feedback">
                     {{ $errors->first('roles') }}
                 </div>
@@ -98,7 +91,7 @@ Create User
                 </div>
             </div>
 
-            <hr class="my-3">
+            <hr class="my-5">
 
             <div class="form-group">
                 <label for="email" class="text-gray-900">Email</label>
