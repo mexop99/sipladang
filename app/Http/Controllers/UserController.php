@@ -100,11 +100,12 @@ class UserController extends Controller
         $user->address = $request->get('address');
         $user->status = $request->get('status');
 
+        // dd($request->file('avatar'));
         if ($request->file('avatar')) {
             if ($user->avatar && file_exists(storage_path('app/public' . $user->avatar))) {
                 Storage::delete('public/' . $user->avatar);
             }
-            $file = $request->file('avatar')->store('avatar', 'public');
+            $file = $request->file('avatar')->store('avatars', 'public');
             $user->avatar = $file;
         }
 

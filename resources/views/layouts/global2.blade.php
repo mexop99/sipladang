@@ -139,6 +139,18 @@
                                 <p>Users</p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/categories">
+                                <i class="nav-icon fas fa-tags"></i>
+                                <p>Categories</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/products">
+                                <i class="nav-icon fas fa-boxes"></i>
+                                <p>Products</p>
+                            </a>
+                        </li>
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->
@@ -168,7 +180,6 @@
 
             <!-- Main content -->
             <section class="content">
-
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-12">

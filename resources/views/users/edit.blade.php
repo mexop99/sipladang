@@ -1,6 +1,5 @@
 @extends('layouts.global2')
 @section('title', 'Edit User')
-
 @section('headcontent', 'Edit User')
 
 @section('content')
@@ -13,13 +12,13 @@
     </div>
 @endif
 
-<form action="{{ route('users.update', [$user->id]) }}" method="post">
+<form action="{{ route('users.update', [$user->id]) }}" method="post" enctype="multipart/form-data">
     @csrf
     <input type="hidden" name="_method" value="PUT">
 
     <div class="col-md-12 text-right">
         <button class="btn btn-primary" type="submit">
-            <span class="oi oi-check"></span> Update</button>
+            Update</button>
     </div>
     <div class="row pl-3 pt-2 mb-5">
         <div class="col-lg-6">
@@ -109,7 +108,9 @@
                         No Avatar
                     @endif
                     <div class="custom-file">
-                        <input type="file" name="avatar" id="avatar" class="custom-file-input">
+                        <input name="avatar" type="file"
+                            class="custom-file-input {{ $errors->first('avatar') ? "is-invalid":"" }}"
+                            id="avatar" aria-describedby="avatar">
                         <label class="custom-file-label" for="avatar">Choose file</label>
                     </div>
                     <small class="text-danger">Kosongkan jika tidak ingin mengubah avatar</small>
@@ -119,6 +120,8 @@
     </div>
 </form>
 @endsection
+
+
 @section('script')
 <script src="{{ asset('adminlte3/plugins/bs-custom-file-input/bs-custom-file-input.min.js') }}"></script>
 <script type="text/javascript">
