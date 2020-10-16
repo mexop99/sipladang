@@ -43,10 +43,10 @@
             <div class="col-md-3">
                 <ul class="nav nav-pills card-header-pills">
                     <li class="nav-item">
-                        <a class="nav-link text-sm active" href="{{ route('products.index') }}">Published</a>
+                        <a class="nav-link" href="{{ route('products.index') }}">Published</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-sm" href="{{ route('products.trash') }}">Trash</a>
+                        <a class="nav-link active" href="{{ route('products.trash') }}">Trash</a>
                     </li>
                 </ul>
             </div>
@@ -68,7 +68,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($products as $no => $item)
+                            @foreach($products_trash as $no => $item)
                                 <tr>
                                     <th>{{ $item->sku }}</th>
                                     <td>{{ $item->name }}</td>
@@ -78,23 +78,28 @@
                                     <td>
                                         <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
                                             <div class="btn-group mr-2" role="group" aria-label="first group">
-                                                <a href="{{ route('products.edit', [$item->id]) }}"
-                                                    type="button" class="btn btn-primary btn-sm" title="Edit Product">
-                                                    <i class="fas fa-edit"></i>
+                                                <a href="{{ route('products.restore', [$item->id]) }}"
+                                                    type="button" class="btn btn-primary btn-sm" title="Restore">
+                                                    <i class="fas fa-trash-restore-alt"></i>
                                                 </a>
                                                 <a href="#" data-id="{{ $item->id }}" type="button"
-                                                    class="btn btn-info btn-sm" title="Show Product">
+                                                    class="btn btn-info btn-sm btn-trash" title="Show Detail">
                                                     <i class="fas fa-info-circle"></i>
                                                 </a>
+                                                {{-- <a href="{{ route('products.show-trash', [$item->id]) }}" data-id="{{ $item->id }}" type="button" target="_blank"
+                                                    class="btn btn-info btn-sm" title="Show Detail">
+                                                    <i class="fas fa-info-circle"></i>
+                                                </a> --}}
                                             </div>
                                             <div class="btn-group mr-2" role="group" aria-label="Second group">
                                                 <form
-                                                    action="{{ route('products.destroy', [$item->id]) }}"
-                                                    method="post" onsubmit="return confirm('Move Product to Trash?')">
+                                                    action="{{ route('products.delete-permanent', [$item->id]) }}"
+                                                    method="post"
+                                                    onsubmit="return confirm('Product will be delete PERMANENT?')">
                                                     @csrf
                                                     <input type="hidden" value="DELETE" name="_method">
                                                     <button type="submit" class="btn btn-sm btn-danger"
-                                                        title="Hapus Product">
+                                                        title="Hapus PERMANENT">
                                                         <i class="fas fa-trash-alt"></i>
                                                     </button>
                                                 </form>
@@ -107,7 +112,7 @@
                         <tfoot>
                             <tr>
                                 <td colspan="6">
-                                    {{ $products->appends(Request::all())->links() }}
+                                    {{ $products_trash->appends(Request::all())->links() }}
                                 </td>
                             </tr>
                         </tfoot>
@@ -138,10 +143,10 @@
 
 <script>
     // script untuk modal-info
-    $('.btn-info').on('click', function () {
+    $('.btn-trash').on('click', function () {
         var id = $(this).data('id')
         $.ajax({
-            url: `/products/${id}`,
+            url: `products/${id}/show-trash`,
             method: "GET",
             success: function (data) {
                 $('#modal-info').find('.modal-body').html(data)
@@ -152,6 +157,5 @@
             }
         })
     });
-
 </script>
 @endsection

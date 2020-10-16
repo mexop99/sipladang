@@ -9,8 +9,20 @@ class Product extends Model
 {
     Use SoftDeletes;
 
-    public function categories()
+    public function category()
     {
-        return $this->belongsToMany('App\Category');
+        return $this->belongsTo('App\Category');
+    }
+    public function createdBy()
+    {
+        return $this->belongsTo('App\User', 'created_by');
+    }
+    public function updatedBy()
+    {
+        return $this->belongsTo('App\User', 'updated_by');
+    }
+    public function deletedBy()
+    {
+        return $this->belongsTo('App\User', 'deleted_by');
     }
 }
