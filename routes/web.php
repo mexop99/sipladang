@@ -29,3 +29,5 @@ Route::get('/products/{id}/restore', 'ProductController@restore')->name('product
 Route::get('/products/{id}/show-trash', 'ProductController@showTrash')->name('products.show-trash');
 Route::delete('/products/{id}/delete-permanent', 'ProductController@deletePermanent')->name('products.delete-permanent');
 Route::resource("products", "ProductController");
+
+Route::resource("distributors", "DistributorController");

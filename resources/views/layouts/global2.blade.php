@@ -151,6 +151,12 @@
                                 <p>Products</p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/distributors">
+                                <i class="nav-icon fas fa-industry"></i>
+                                <p>Distributors</p>
+                            </a>
+                        </li>
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->
