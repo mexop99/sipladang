@@ -31,3 +31,4 @@ Route::delete('/products/{id}/delete-permanent', 'ProductController@deletePerman
 Route::resource("products", "ProductController");
 
 Route::resource("distributors", "DistributorController");
+Route::resource("vehicles", "VehicleController");

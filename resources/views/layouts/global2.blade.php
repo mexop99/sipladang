@@ -157,6 +157,12 @@
                                 <p>Distributors</p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/vehicles">
+                                <i class="nav-icon fas fa-truck"></i>
+                                <p>Vehicle</p>
+                            </a>
+                        </li>
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->

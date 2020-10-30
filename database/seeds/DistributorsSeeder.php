@@ -12,6 +12,6 @@ class DistributorsSeeder extends Seeder
      */
     public function run()
     {
-        $distributors = factory(Distributor::class, 10)->create();
+        $distributors = factory(Distributor::class, 100)->create();
     }
 }
