@@ -132,6 +132,13 @@
                                 <p>Dashboard</p>
                             </a>
                         </li>
+                        <li class="nav-header">TRANSACTIONS</li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/enter-product">
+                                <i class="nav-icon fas fa-truck-loading"></i>
+                                <p>Produk Masuk</p>
+                            </a>
+                        </li>
                         <li class="nav-header">MASTER DATA</li>
                         <li class="nav-item">
                             <a class="nav-link" href="/users">
@@ -163,6 +170,7 @@
                                 <p>Vehicle</p>
                             </a>
                         </li>
+                        
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->

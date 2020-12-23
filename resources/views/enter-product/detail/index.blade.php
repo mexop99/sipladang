@@ -1,0 +1,1 @@
+<h1>index detail</h1>
