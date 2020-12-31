@@ -87,7 +87,7 @@
                 <p>Sistem Informasi Pergudangan Ladang</p>
 
                 <div class="links">
-                    <a href="https://github.com/mexop99/sipladang">GitHub</a>
+                    <a href="https://github.com/mexop99/sipladang" target="_blank">GitHub</a>
                 </div>
             </div>
         </div>

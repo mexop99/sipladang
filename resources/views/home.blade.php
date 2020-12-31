@@ -1,4 +1,4 @@
-@extends('layouts.global')
+@extends('layouts.global2')
 @section('title')
     | HOME
 @endsection

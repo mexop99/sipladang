@@ -1,15 +1,11 @@
-@extends('layouts.global')
-@section('title')
-| Create User
-@endsection
+@extends('layouts.global2')
+@section('title', 'Create User')
+@section('headcontent', 'Create User')
 
-@section('headcontent')
-Create User
-@endsection
 
 @section('content')
 @if(session('status'))
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <div class="alert alert-success alert-dismissible fade show col-md-9" role="alert">
         {{ session('status') }}
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
@@ -18,14 +14,26 @@ Create User
 @endif
 
 
-<div class="card shadow mb-4 col-md-9 p-2">
+<div class="card shadow mb-4 col-md-9 p-2 card-primary card-outline">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Create User</h6>
     </div>
     <div class="card-body">
         {{-- FORM ADD USER --}}
         <form action="{{ route('users.store') }}" method="post" enctype="multipart/form-data">
             @csrf
+
+            <div class="form-group">
+                <label for="avatar" class="text-gray-900">Avatar</label>
+                <div class="custom-file">
+                    <input name="avatar" type="file"
+                        class="custom-file-input {{ $errors->first('avatar') ? "is-invalid":"" }}"
+                        id="avatar" aria-describedby="avatar">
+                    <label class="custom-file-label" for="avatar">Choose file</label>
+                </div>
+                <div class="invalid-feedback">
+                    {{ $errors->first('avatar') }}
+                </div>
+            </div>
 
             <div class="form-group">
                 <label for="name" class="text-gray-900">Name</label>
@@ -63,13 +71,6 @@ Create User
                     <label for="STAFF" class="text-gray-900 form-check-label">STAFF</label>
                 </div>
 
-                <div class="form-check form-check-inline">
-                    <input type="checkbox"
-                        class="form-check-input {{ $errors->first('roles') ? "is-invalid":"" }}"
-                        name="roles[]" id="CUSTOMER" value="CUSTOMER">
-                    <label for="CUSTOMER" class="text-gray-900 form-check-label">CUSTOMER</label>
-                </div>
-
                 <div class="invalid-feedback">
                     {{ $errors->first('roles') }}
                 </div>
@@ -84,21 +85,7 @@ Create User
                 </div>
             </div>
 
-            <div class="form-group custom-file">
-                <label for="avatar" class="text-gray-900">Avatar</label>
-                <div class="custom-file">
-                    <input name="avatar" type="file"
-                        class="custom-file-input {{ $errors->first('avatar') ? "is-invalid":"" }}"
-                        id="avatar" aria-describedby="avatar">
-                    <label class="custom-file-label" for="avatar">Choose file</label>
-                </div>
-
-                <div class="invalid-feedback">
-                    {{ $errors->first('avatar') }}
-                </div>
-            </div>
-
-            <hr class="my-3">
+            <hr class="my-5">
 
             <div class="form-group">
                 <label for="email" class="text-gray-900">Email</label>
@@ -147,5 +134,15 @@ Create User
         </form>
     </div>
 </div>
+@endsection
 
+@section('script')
+<script src="{{ asset('adminlte3/plugins/bs-custom-file-input/bs-custom-file-input.min.js') }}">
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        bsCustomFileInput.init();
+    });
+
+</script>
 @endsection
