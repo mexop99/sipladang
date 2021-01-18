@@ -45,7 +45,7 @@ class ProductController extends Controller
         $maxID = Product::max('id');
 
         $new_product->category_id = $request->get('category_id');
-        $new_product->sku = $request->get('sku');
+        $new_product->sku = strtoupper($request->get('sku'));
         $new_product->name = $request->get('name');
         $new_product->slug = \Str::slug($request->get('name') . "-" . ($maxID+1));
         $new_product->desc = $request->get('desc');
@@ -84,7 +84,6 @@ class ProductController extends Controller
     public function edit($id)
     {
         $product = Product::findOrFail($id);
-        $categories = Category::get();
         return view('products.edit', compact('product', 'categories'));
     }
 
@@ -101,7 +100,7 @@ class ProductController extends Controller
         $product = Product::findOrFail($id);
 
         $product->category_id = $request->get('category_id');
-        $product->sku = $request->get('sku');
+        $product->sku = strtoupper($request->get('sku'));
         $product->name = $request->get('name');
         $product->slug = \Str::slug( $request->get('name') . "-" . $id);
         $product->desc = $request->get('desc');

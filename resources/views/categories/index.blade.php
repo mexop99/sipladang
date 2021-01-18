@@ -2,6 +2,15 @@
 @section('title', 'Categories')
 @section('headcontent', 'Categories')
 
+
+<!-- DataTables -->
+@section('stylesheet')
+<link rel="stylesheet"
+    href="{{ asset('adminlte3/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
+<link rel="stylesheet"
+    href="{{ asset('adminlte3/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
+@endsection
+
 @section('content')
 <div class="col-12">
     @if(session('status'))
@@ -27,7 +36,7 @@
     <div class="card shadow mb-2">
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-responsive-lg table-hover" id="dataTable" width="100%" cellspacing="0">
+                <table class="table table-hover" id="dataTableCategory">
                     <thead>
                         <tr>
                             <th>ID</th>
@@ -53,7 +62,7 @@
                                 <td>{{ $item->slug }}</td>
                                 <td>
                                     <img src="{{ asset('storage/' .$item->image) }}"
-                                        alt="Image categori" srcset="" width="30%">
+                                        alt="Image categori" srcset="" width="10%">
                                 </td>
                                 <td>
                                     <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
@@ -84,17 +93,35 @@
                             </tr>
                         @endforeach
                     </tbody>
-                    <tfoot>
-                        <tr>
-                            <td colspan="10">
-                                {{ $categories->appends(Request::all())->links() }}
-                            </td>
-                        </tr>
-                    </tfoot>
                 </table>
             </div>
         </div>
     </div>
 </div>
+@endsection
 
+@section('script')
+<!-- DataTables -->
+<script src="{{ asset('adminlte3/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('adminlte3/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}">
+</script>
+<script
+    src="{{ asset('adminlte3/plugins/datatables-responsive/js/dataTables.responsive.min.js') }}">
+</script>
+<script
+    src="{{ asset('adminlte3/plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}">
+</script>
+<script>
+    $(function () {
+        $('#dataTableCategory').DataTable({
+            "responsive": true,
+            "autoWidth": false,
+            "lengthMenu": [
+                [5, 10, 25, 50, -1],
+                [5, 10, 25, 50, "All"]
+            ]
+        });
+    })
+
+</script>
 @endsection

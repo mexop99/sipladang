@@ -134,38 +134,38 @@
                         </li>
                         <li class="nav-header">TRANSACTIONS</li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/enter-product">
+                            <a class="nav-link {{ set_active('enter-product*') }}" href="/enter-product">
                                 <i class="nav-icon fas fa-truck-loading"></i>
                                 <p>Produk Masuk</p>
                             </a>
                         </li>
                         <li class="nav-header">MASTER DATA</li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/users">
+                            <a class="nav-link {{ set_active('users*') }}" href="/users">
                                 <i class="nav-icon fas fa-users"></i>
                                 <p>Users</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/categories">
+                            <a class="nav-link {{ set_active('categories*') }}" href="/categories">
                                 <i class="nav-icon fas fa-tags"></i>
                                 <p>Categories</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/products">
+                            <a class="nav-link {{ set_active('products*') }}" href="/products">
                                 <i class="nav-icon fas fa-boxes"></i>
                                 <p>Products</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/distributors">
+                            <a class="nav-link {{ set_active('distributors*') }}" href="/distributors">
                                 <i class="nav-icon fas fa-industry"></i>
                                 <p>Distributors</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/vehicles">
+                            <a class="nav-link {{ set_active('vehicles*') }}" href="/vehicles">
                                 <i class="nav-icon fas fa-truck"></i>
                                 <p>Vehicle</p>
                             </a>

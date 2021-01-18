@@ -1,6 +1,14 @@
 @extends('layouts.global2')
 @section('title', 'List Product')
-{{-- @section('headcontent', 'List Product') --}}
+@section('headcontent', 'List Product')
+
+@section('stylesheet')
+<!-- DataTables -->
+<link rel="stylesheet"
+    href="{{ asset('adminlte3/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
+<link rel="stylesheet"
+    href="{{ asset('adminlte3/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
+@endsection
 
 @section('content')
 <div class="row">
@@ -14,21 +22,17 @@
             </div>
         @endif
 
-        {{-- BUTTON ADD PRODUCT --}}
+        <a href="{{ route('products.create') }}" class="btn btn-info mb-2">
+            <span class="icon">
+                <i class="fas fa-user-plus"></i>
+            </span>
+            <span class="text">
+                Add Product
+            </span>
+        </a>
         <div class="mb-2">
-            <a href="{{ route('products.create') }}" class="btn btn-sm btn-primary btn-icon-split">
-                <span class="icon text-white-50">
-                    <i class="fas fa-user-plus"></i>
-                </span>
-                <span class="text">
-                    Add Product
-                </span>
-            </a>
-        </div>
-
-        <div class="row">
             {{-- FORM SEARCHING --}}
-            <div class="col-md-9">
+            {{-- <div class="col-md-9">
                 <form action="{{ route('products.index') }}">
                     <div class="input-group mb-3">
                         <input type="text" name="keyword" id="keyword"
@@ -39,15 +43,17 @@
                         </div>
                     </div>
                 </form>
-            </div>
-            <div class="col-md-3">
-                <ul class="nav nav-pills card-header-pills">
+            </div> --}}
+            
+            <div class="col-md-9">
+                <ul class="nav nav-pills card-header-pills pull-right">
                     <li class="nav-item">
                         <a class="nav-link text-sm active" href="{{ route('products.index') }}">Published</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-sm" href="{{ route('products.trash') }}">Trash</a>
                     </li>
+                    
                 </ul>
             </div>
         </div>
@@ -56,7 +62,7 @@
         <div class="card shadow mb-2">
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-responsive-lg table-hover" id="dataTable" width="100%" cellspacing="0">
+                    <table class="table table-hover" id="dataTable">
                         <thead>
                             <tr>
                                 <th>SKU</th>
@@ -135,6 +141,16 @@
 @endsection
 
 @section('script')
+{{-- DataTables --}}
+<script src="{{ asset('adminlte3/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('adminlte3/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}">
+</script>
+<script
+    src="{{ asset('adminlte3/plugins/datatables-responsive/js/dataTables.responsive.min.js') }}">
+</script>
+<script
+    src="{{ asset('adminlte3/plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}">
+</script>
 
 <script>
     // script untuk modal-info
@@ -152,6 +168,16 @@
             }
         })
     });
+    $(function () {
+        $('#dataTable').DataTable({
+            "responsive": true,
+            "autoWidth": false,
+            "lengthMenu": [
+                [5, 10, 25, 50, -1],
+                [5, 10, 25, 50, "All"]
+            ]
+        });
+    })
 
 </script>
 @endsection

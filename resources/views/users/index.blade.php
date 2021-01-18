@@ -4,6 +4,14 @@
 List User
 @endsection
 
+@section('stylesheet')
+<!-- DataTables -->
+<link rel="stylesheet"
+    href="{{ asset('adminlte3/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
+<link rel="stylesheet"
+    href="{{ asset('adminlte3/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
+@endsection
+
 @section('content')
 
 @if(session('status'))
@@ -28,7 +36,7 @@ List User
 <div class="card shadow mb-2">
     <div class="card-body">
         <div class="table-responsive">
-            <table class="table table-responsive-lg table-hover" id="dataTable" width="100%" cellspacing="0">
+            <table class="table table-responsive-lg table-hover" id="dataTableUser" width="100%" cellspacing="0">
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -102,6 +110,16 @@ List User
 @endsection
 
 @section('script')
+{{-- DataTables --}}
+<script src="{{ asset('adminlte3/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('adminlte3/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}">
+</script>
+<script
+    src="{{ asset('adminlte3/plugins/datatables-responsive/js/dataTables.responsive.min.js') }}">
+</script>
+<script
+    src="{{ asset('adminlte3/plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}">
+</script>
 
 <script>
     // script untuk modal-info
@@ -119,6 +137,16 @@ List User
             }
         })
     });
+    $(function () {
+        $('#dataTableUser').DataTable({
+            "responsive": true,
+            "autoWidth": false,
+            "lengthMenu": [
+                [5, 10, 25, 50, -1],
+                [5, 10, 25, 50, "All"]
+            ]
+        });
+    })
 
 </script>
 @endsection
